@@ -1,0 +1,113 @@
+#generate {
+  background-color: #19CB94;
+  padding: 0.4rem;
+  width: 10rem;
+  border: 0.1rem solid #19cb93d5;
+  border-radius: 0.3rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+#entryHolder > div {
+  display: flex;
+  justify-content: space-between;
+}
+
+#entryHolder > div:last-child {
+  display: block;
+}
+
+#entryHolder h3 {
+  text-align: center;
+  margin: 5px 0;
+}
+
+.container {
+  padding: 1rem;
+  background: #00000033;
+  border-radius: 0.8rem; 
+  align-items: center;
+}
+
+.night, .day {
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.night {
+  background-image: url(./images/night.png);
+}
+
+.day {
+  background-image: url(./images/day.png);
+}
+
+.form {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+}
+
+.form label, .form button {
+  margin: 0.8rem 0 0 0;
+}
+
+.form label {
+  font-weight: bolder;
+  margin-bottom: 2px;
+}
+
+hr {
+  margin: 10px 0;
+  opacity: 0.4;
+}
+
+input, textarea {
+  color: aliceblue;
+  background: rgba(0, 0, 0, 0.404);
+  border: none;
+  border-radius:  0.4rem;
+  padding:  0.4rem;
+  border: solid 0.1rem rgba(0, 255, 255, 0.1);
+  transition: ease-in 0.5s;
+  width: 100%;
+  text-decoration: underline #80808025;
+}
+
+textarea {
+  resize: none;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border: solid 0.1rem cyan;
+  transition: ease-in 0.2s;
+}
+
+label, textarea, input {
+  text-shadow: #000 0.2rem 0 0.625rem;
+  font-size: 1.2rem;
+}
+
+html {
+  font-size: 16px;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+  color: aliceblue;
+  font-family: monospace;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px;
+}
