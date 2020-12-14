@@ -29,6 +29,26 @@
   /* Functions */
   async function generateFun() {
     getData()
+      .then(data => { postData(data) });
+  }
+  // Async function for sending a POST request to server
+  async function postData(data = {}) {
+    const response = await fetch("/recententry", {
+      method: 'POST',
+      credentials: 'same-origin',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
+    try {
+      const newData = await response.json();
+      console.log(newData);
+      return newData;
+    } catch (error) {
+      console.log("Error:", error);
+      alert("Sorry! Something went wrong :(");
+    }
   }
   // Async function for sending a GET request to the OpenWeatherMap API
   async function getData() {
