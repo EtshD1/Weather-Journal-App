@@ -13,6 +13,10 @@
   justify-content: space-between;
 }
 
+#entryHolder > h3 {
+  text-align: center;
+}
+
 .container {
   padding: 1rem;
   background: #00000033;
