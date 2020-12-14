@@ -15,11 +15,22 @@ app.use(cors());
 app.use(express.static('website'));
 /*  Callback functions */
 const callbacks = {
-  homepage: (req, res) => { res.sendFile("./index.html"); }
+  homepage: (req, res) => { res.sendFile("./index.html"); },
+  recentEntry: (req, res) => { res.json(projectData); },
+  updateEntry: (req, res) => {
+    projectData.temperature = req.body.temperature;
+    projectData.date = req.body.date;
+    projectData.content = req.body.content;
+    res.json(projectData);
+  }
 };
 /* Routes */
 // GET: homepage
 app.get("/", callbacks.homepage);
+// GET: JSON projectData
+app.get("/recententry", callbacks.recentEntry);
+// POST: update projectData
+app.post("/recententry", callbacks.updateEntry);
 /* Start up Server */
 app.listen(port, () => {
   console.log(`Server running at ${port}`);
