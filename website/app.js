@@ -17,9 +17,7 @@
     content: document.querySelector("#content")
   };
   /* Personal API Key for OpenWeatherMap API */
-  const APIurl = "api.openweathermap.org/data/2.5/weather?zip=";
-  const APIkey = "&appid=83cc7105451f87232b0b70e1aabb757d";
-
+  const APIkey = "83cc7105451f87232b0b70e1aabb757d";
   /* Events */
   // Change background depending on the hour
   if (hour >= 6 && hour < 18) {
@@ -28,12 +26,27 @@
     document.body.classList.add("night");
   }
   generateBtn.addEventListener("click", generateFun);
-  entryHolder.date.innerHTML = UsFormat;
-
   /* Functions */
-  function generateFun() {
-    console.log(userEntry.zip.value);
-    console.log(userEntry.feelings.value);
+  async function generateFun() {
+    getData()
   }
-
-})()
+  // Async function for sending a GET request to the OpenWeatherMap API
+  async function getData() {
+    const URL = "http://api.openweathermap.org/data/2.5/weather?zip=" + userEntry.zip.value + "&appid=" + APIkey;
+    const response = await fetch(URL);
+    const newData = await response.json();
+    const entryData = {
+      temperature: newData.main.temp,
+      date: UsFormat,
+      content: userEntry.feelings.value,
+    }
+    setInfo(entryData);
+    return entryData;
+  }
+  // Sets fetched information to HTML
+  function setInfo(data = {}) {
+    entryHolder.temp.innerHTML = data.temperature;
+    entryHolder.date.innerHTML = data.date;
+    entryHolder.content.innerHTML = data.content;
+  }
+})();
