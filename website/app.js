@@ -26,10 +26,18 @@
     document.body.classList.add("night");
   }
   generateBtn.addEventListener("click", generateFun);
+  getServerData();
   /* Functions */
   async function generateFun() {
     getData()
       .then(data => { postData(data) });
+  }
+  // Async function for sending a GET request to the server
+  async function getServerData() {
+    const response = await fetch("/recententry");
+    const fetchData = await response.json();
+    if (fetchData.temperature && fetchData.date && fetchData.content)
+      setInfo(fetchData);
   }
   // Async function for sending a POST request to server
   async function postData(data = {}) {
